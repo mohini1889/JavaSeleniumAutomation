@@ -15,6 +15,7 @@ public class GoogleSearchTest {
 
 	@Before
 	public void setUp() {
+		 System.setProperty("webdriver.gecko.driver", "./src/test/resources/drivers/geckodriver.exe");
 		// Launch a new Firefox instance
 		driver = new FirefoxDriver();
 		// Maximize the browser window

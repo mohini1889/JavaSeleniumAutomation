@@ -17,7 +17,7 @@ public class GoogleSearchTestOnIE {
 	@SuppressWarnings("deprecation")
 	@Before
 	public void setUp() {
-		System.setProperty("webdriver.ie.driver", "src/test/resources/drivers/IEDriverServer.exe");
+		System.setProperty("webdriver.ie.driver", "./src/test/resources/drivers/IEDriverServer.exe");
 
 		DesiredCapabilities caps = DesiredCapabilities.internetExplorer();
 

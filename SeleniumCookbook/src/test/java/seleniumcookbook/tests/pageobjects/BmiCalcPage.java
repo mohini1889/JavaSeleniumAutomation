@@ -2,49 +2,59 @@ package seleniumcookbook.tests.pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import static org.junit.Assert.*;
+
 public class BmiCalcPage extends LoadableComponent<BmiCalcPage> {
 
-	  private WebElement heightCMS;
-	  private WebElement weightKg;
-	  private WebElement calculate;
-	  private WebElement bmi;
-	  private WebElement bmiCategory;
+	@FindBy(name = "heightCMS")
+	private WebElement heightCMS;
 
-	  private WebDriver driver;
+	@FindBy(name = "weightKg")
+	private WebElement weightKg;
 
-	  private String url = "http://cookbook.seleniumacademy.com/bmicalculator.html";
-	  private String title = "BMI Calculator";
+	@FindBy(id = "Calculate")
+	private WebElement calculate;
 
-	  public BmiCalcPage(WebDriver driver) {
-	    this.driver = driver;
-	    PageFactory.initElements(driver, this);
-	  }
+	@FindBy(name = "bmi")
+	private WebElement bmi;
 
-	  @Override
-	  protected void load() {
-	    this.driver.get(url);
-	  }
+	@FindBy(id = "bmi_category")
+	private WebElement bmiCategory;
 
-	  @Override
-	  protected void isLoaded() throws Error {
-	    assertTrue("Bmi Calculator page not loaded",
-	        driver.getTitle().equals(title));
-	  }
+	private WebDriver driver;
 
-	  public void calculateBmi(String height, String weight) {
-	    heightCMS.sendKeys(height);
-	    weightKg.sendKeys(weight);
-	    calculate.click();
-	  }
+	private String url = "http://cookbook.seleniumacademy.com/bmicalculator.html";
+	private String title = "BMI Calculator";
 
-	  public String getBmi() {
-	    return bmi.getAttribute("value");
-	  }
-
-	  public String getBmiCategory() {
-	    return bmiCategory.getAttribute("value");
-	  }
+	public BmiCalcPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
+
+	@Override
+	protected void load() {
+		this.driver.get(url);
+	}
+
+	@Override
+	protected void isLoaded() throws Error {
+		assertTrue("Bmi Calculator page not loaded", driver.getTitle().equals(title));
+	}
+
+	public void calculateBmi(String height, String weight) {
+		heightCMS.sendKeys(height);
+		weightKg.sendKeys(weight);
+		calculate.click();
+	}
+
+	public String getBmi() {
+		return bmi.getAttribute("value");
+	}
+
+	public String getBmiCategory() {
+		return bmiCategory.getAttribute("value");
+	}
+}

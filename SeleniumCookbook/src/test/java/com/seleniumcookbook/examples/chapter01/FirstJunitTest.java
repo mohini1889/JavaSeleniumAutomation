@@ -1,0 +1,14 @@
+package com.seleniumcookbook.examples.chapter01;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class FirstJunitTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

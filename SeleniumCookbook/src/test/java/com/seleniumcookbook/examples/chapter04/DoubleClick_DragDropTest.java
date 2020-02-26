@@ -7,12 +7,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class DoubleClick_DragDropTest {
 	@Test
 	public void testDoubleClick() throws Exception {
-		System.setProperty("webdriver.chrome.driver", "./src/test/resources/drivers/chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "./src/test/resources/drivers/chromedriver.exe");
+		//WebDriver driver = WebDriver.
+		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.get("http://cookbook.seleniumacademy.com/DoubleClickDemo.html");
 
@@ -34,8 +40,8 @@ public class DoubleClick_DragDropTest {
 
 	@Test
 	public void testDragDrop() {
-		System.setProperty("webdriver.chrome.driver", "./src/test/resources/drivers/chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		//System.setProperty("webdriver.chrome.driver", "./src/test/resources/drivers/chromedriver.exe");
+		WebDriver driver = new ChromeDriver(new ChromeOptions().setBinary("./src/test/resources/drivers/chromedriver.exe"));
 		driver.get("http://cookbook.seleniumacademy.com/DoubleClickDemo.html");
 		driver.get("http://cookbook.seleniumacademy.com/DragDropDemo.html");
 

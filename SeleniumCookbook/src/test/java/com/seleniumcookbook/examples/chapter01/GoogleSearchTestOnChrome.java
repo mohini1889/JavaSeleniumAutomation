@@ -2,7 +2,9 @@ package com.seleniumcookbook.examples.chapter01;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,14 +12,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.github.bonigarcia.wdm.DriverManagerType;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class GoogleSearchTestOnChrome {
 	private WebDriver driver;
 
 	  @Before
 	  public void setUp() {
-	    System.setProperty("webdriver.chrome.driver",
-	        "./src/test/resources/drivers/chromedriver.exe");
+	    //System.setProperty("webdriver.chrome.driver","./src/test/resources/drivers/chromedriver.exe");
 
+		  WebDriverManager.chromedriver().setup();
+		  
+		//ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
 	    // Launch Chrome
 	    driver = new ChromeDriver();
 	    // Maximize the browser window
